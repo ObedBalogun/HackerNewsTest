@@ -27,6 +27,7 @@ def fetch_news():
                 }
                 news_item = NewsItem(**details_dict)
                 new_item_details.append(news_item)
+                print("done")
         else:
             for news_id in latest_news:
                 news_details = hacker_news.get_news_details(news_id)
@@ -41,6 +42,7 @@ def fetch_news():
                 }
                 news_item = NewsItem(**details_dict)
                 new_item_details.append(news_item)
+                print("Done done")
         NewsItem.objects.bulk_create(new_item_details)
     except Exception as e:
         print(e)
@@ -61,7 +63,7 @@ def resolve_comments():
             for comment in comment_list:
                 get_comment_details = hacker_news.get_news_details(comment)
                 parent_article = NewsItem.objects.get(item_id=item[0])
-                comment_details = {"commenter": get_comment_details['by'],
+                comment_details = {"commenter": get_comment_details.get('by', None),
                                    "comment_id": get_comment_details['id'],
                                    "parent_id": get_comment_details['parent'],
                                    "parent_article": parent_article,
@@ -73,4 +75,5 @@ def resolve_comments():
                                    }
                 comment_object = Comment(**comment_details)
                 comment_list.append(comment_object)
+                print("Done for comment")
     Comment.objects.bulk_create(comment_list)
