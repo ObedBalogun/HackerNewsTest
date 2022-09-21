@@ -1,0 +1,47 @@
+.idea
+.venv
+venv
+finag-env
+*.pyc
+db.sqlite3
+__pycache__
+.vscode
+.env
+archived/
+scripts/ussd-lga-split-script.py
+htmlcov
+.coverage
+finagapp
+scratch1.py
+rough_file.py
+
+### macOS ###
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+
+### macOS ###
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+livestockproduct.txt
+inputproduct.txt
+mechanization_product.txt
