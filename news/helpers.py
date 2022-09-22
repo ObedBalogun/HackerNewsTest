@@ -29,7 +29,9 @@ def fetch_news():
                 new_item_details.append(news_item)
                 print("done")
         else:
-            for news_id in latest_news:
+            latest_news_id = NewsItem.objects.all().latest('created').values_list('item_id', flat=True)[0]
+            index_of_latest_news = latest_news.index(latest_news_id)
+            for news_id in latest_news[(index_of_latest_news + 1):(100 + index_of_latest_news)]:
                 news_details = hacker_news.get_news_details(news_id)
                 details_dict = {
                     'item_id': news_details['id'],
@@ -61,19 +63,26 @@ def resolve_comments():
         comment_list = item[1]
         if len(comment_list) > 0:
             for comment in comment_list:
-                get_comment_details = hacker_news.get_news_details(comment)
-                parent_article = NewsItem.objects.get(item_id=item[0])
-                comment_details = {"commenter": get_comment_details.get('by', None),
-                                   "comment_id": get_comment_details['id'],
-                                   "parent_id": get_comment_details['parent'],
-                                   "parent_article": parent_article,
-                                   "text": get_comment_details['text'],
-                                   "type": get_comment_details['type'],
-                                   "deep_comments": get_comment_details[
-                                       'kids'] if 'kids' in get_comment_details else None,
-                                   "timestamp": get_comment_details['time']
-                                   }
-                comment_object = Comment(**comment_details)
-                comment_list.append(comment_object)
-                print("Done for comment")
+                try:
+                    get_comment_details = hacker_news.get_news_details(comment)
+                    if get_comment_details:
+                        parent_article = NewsItem.objects.get(item_id=item[0])
+                        if get_comment_details.get('deleted') == True or get_comment_details.get('dead') == True:
+                            continue
+                        comment_details = {"commenter": get_comment_details.get('by', None),
+                                           "comment_id": get_comment_details['id'],
+                                           "parent_id": get_comment_details['parent'],
+                                           "parent_article": parent_article,
+                                           "text": get_comment_details['text'],
+                                           "type": get_comment_details['type'],
+                                           "deep_comments": get_comment_details[
+                                               'kids'] if 'kids' in get_comment_details else None,
+                                           "timestamp": get_comment_details['time']
+                                           }
+                        comment_object = Comment(**comment_details)
+                        comment_list.append(comment_object)
+                    else:
+                        continue
+                except Exception as e:
+                    print(e)
     Comment.objects.bulk_create(comment_list)

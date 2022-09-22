@@ -9,7 +9,7 @@ app.config_from_object('django.conf:settings', namespace='CELERY')
 app.autodiscover_tasks()
 app.conf.beat_schedule = {
     'get-new-and-comments-every-five-min': {
-        'task': 'news.tasks.get_new_and_comment_asynchrously',
-        'schedule': crontab(minute=1)
+        'task': 'news.tasks.get_new_and_comment_asynchronously',
+        'schedule': crontab(minute='*/5')
     }
 }
