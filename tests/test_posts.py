@@ -11,7 +11,7 @@ class TestCreatePost:
 
         """
         data = {
-            "content": "This is a new post for testing..."
+            "": "This is a new post for testing..."
         }
 
         response = client.post("hacker-news/api/", data=data)

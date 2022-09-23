@@ -1,0 +1,20 @@
+Requirements:
+Python, Django, Docker, Celery, Redis
+
+Run these commands to use application
+-   docker-compose build
+-   docker-compose up
+
+To createsuperuser for db admin
+
+-   docker exec -it hackernewsdocker /bin/bash
+-   python manage.py createsuperuser
+
+
+DATABASE CREDENTIALS
+
+-   POSTGRES_NAME=postgres
+-   POSTGRES_USER=postgres
+-   POSTGRES_PASSWORD=postgres
+
+

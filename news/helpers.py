@@ -29,7 +29,7 @@ def fetch_news():
                 new_item_details.append(news_item)
                 print("done")
         else:
-            latest_news_id = NewsItem.objects.all().latest('created').values_list('item_id', flat=True)[0]
+            latest_news_id = NewsItem.objects.all().latest('created').item_id
             index_of_latest_news = latest_news.index(latest_news_id)
             for news_id in latest_news[(index_of_latest_news + 1):(100 + index_of_latest_news)]:
                 news_details = hacker_news.get_news_details(news_id)
@@ -45,7 +45,6 @@ def fetch_news():
                 }
                 news_item = NewsItem(**details_dict)
                 new_item_details.append(news_item)
-                print("Done done")
         NewsItem.objects.bulk_create(new_item_details)
     except Exception as e:
         print(e)

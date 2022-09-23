@@ -1,11 +1,11 @@
-FROM python:3.8-slim-buster
+FROM python:3.9-buster
 
-RUN mkdir -p /hackernews
+RUN mkdir -p /hackernewsdocker
 
-WORKDIR /hackernews
+WORKDIR /hackernewsdocker
 
-COPY ./requirements.txt /hackernews/requirements.txt
+COPY ./requirements.txt /hackernewsdocker/requirements.txt
 
 RUN pip install -r requirements.txt
 
-COPY . /hackernews
+COPY . /hackernewsdocker

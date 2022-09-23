@@ -89,10 +89,10 @@ DB_PASSWORD = config('DB_PASSWORD')
 
 DB_DETAILS = {
     'ENGINE': 'django.db.backends.postgresql',
-    'NAME': DB_NAME,
-    'USER': DB_USER,
-    'PASSWORD': DB_PASSWORD,
-    'HOST': DB_HOST,
+    'NAME': 'postgres',
+    'USER': 'postgres',
+    'PASSWORD': 'postgres',
+    'HOST': 'hackernews',
     'PORT': '5432',
 }
 
@@ -147,8 +147,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CELERY_BROKER_URL = 'redis://127.0.0.1:6379'
-CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379'
+CELERY_BROKER_URL = 'redis://redis:6379'
+CELERY_RESULT_BACKEND = 'redis://redis:6379'
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TASK_SERIALIZER = 'json'
