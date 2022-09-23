@@ -1,5 +1,51 @@
-{{news}}
-{% for comment in comments %}
-{{comment.by}}
-{{comment.text}}
-{% endfor %}
+{% extends 'base.html' %}
+{% block title %}Details{% endblock %}
+{% block content %}
+    <div class="flex justify-center mt-24 rounded-sm overflow-y-auto bg-white">
+        <div class="page-content bg-white h-screen m-12 p-12 rounded-md w-3/4 relative overflow-y-auto">
+            <div class="header text-2xl font-bold text-rose-500 my-4">
+                <h1>{{ news.title }}.</h1>
+            </div>
+            <div class="flex justify-center">
+                <img src="https://loremflickr.com/540/540" alt="" class="w-full h-96 object-cover rounded-md">
+            </div>
+            <small class="flex absolute right-0 mr-12 font-semibold my-8 text-slate-500">by: {{ news.posted_by }} -  <span>{{ news.created }}</span></small>
+            <div class="page-content mt-20">
+            <div class="news-content">
+                {% if news.text %}
+                {{ news.text|safe }}
+                    {% else %}
+                    <a target="_blank" href={{ news.url }}>
+                        <p class="text-rose-500 font-semibold italic">Click me for more details...</p>
+                    </a>
+                {% endif %}
+            </div>
+            <div class="mt-12">
+            <div class="comment-header text-rose-400">
+                <h3 class="font-semibold text-2xl">Comments</h3>
+            </div>
+                <hr>
+            <div class="comments mt-12">
+                {% for comment in comments %}
+                    <div class="comment-card flex flex-row bg-white my-4">
+                    <div class="basis-1/4 align-middle">
+                        <img src="https://loremflickr.com/100/100" alt="" class="rounded-full my-auto">
+
+                        <span class="text-slate-400 p-2">{{ comment.by }}</span>
+                    </div>
+                    <div class="basis-3/4">
+                        <p class="py-4">{{ comment.text|safe }}</p>
+                    </div>
+                    </div>
+                    <hr>
+
+                {% endfor %}
+            </div>
+            </div>
+
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

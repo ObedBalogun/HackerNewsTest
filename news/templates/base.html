@@ -1,13 +1,29 @@
 {% load static %}
+{% load tailwind_tags%}
+
 {% autoescape off %}
     <!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+       {% tailwind_css %}
         <title>
             {% block title %}
             {% endblock title %}
         </title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    </head>
+    <body class="bg-sky-300 relative w-screen h-screen overflow-hidden">
+    <div class="flex flex-col mx-24 mt-12">
+        {% block content %}
+        {% endblock content %}
+    </div>
+       <div class="footer mx-24 absolute p-12" style="bottom: -46px">
+        {% block footer %}
+        {% endblock footer %}
+       </div>
+    </body>
+
 {% endautoescape %}
 </html>

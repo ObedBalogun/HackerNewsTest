@@ -19,4 +19,5 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('hacker-news/', include('news.urls')),
+    path("__reload__/", include("django_browser_reload.urls")),
 ]

@@ -17,6 +17,9 @@ class NewsSerializer(serializers.ModelSerializer):
                 score=validated_data['score'],
                 type=validated_data['type'],
                 kids=validated_data['kids'],
+                by=validated_data['by'],
+                from_api=True,
+
             )
         except IntegrityError as e:
             raise serializers.ValidationError({"errors": str(e)}) from e

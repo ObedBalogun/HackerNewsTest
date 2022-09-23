@@ -1,0 +1,395 @@
+
+html,
+body {
+    overflow: hidden;
+    font-family: -apple-system, 'Br Firma Medium', sans-serif;
+}
+
+body {
+    position: relative;
+
+}
+
+body::-webkit-scrollbar, .project-modal::-webkit-scrollbar, .project-container::-webkit-scrollbar, .about-container::-webkit-scrollbar {
+    width: 0;
+}
+
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.navbar {
+    box-shadow: 0 8px 24px 9px rgba(0, 0, 0, 0.13);
+    backdrop-filter: blur(22px);
+    border-radius: 1.2em;
+}
+
+.navbarNav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 0;
+    margin: .1em .09em;
+}
+
+.navbarNav:hover {
+    margin: .1em .09em;
+    background: #CCCCCC;
+    border-radius: .8em;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+
+}
+
+.activeNav {
+    background: black;
+    border-radius: .8em;
+    padding: .2em 0;
+}
+
+.activeNav .navItem {
+    color: white;
+}
+
+.navbarNav.active .navItem {
+    color: white;
+}
+
+.navItem {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 150%;
+    text-align: center;
+    color: #000000;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 1em .4em;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+    cursor: pointer;
+
+}
+
+.navLogo {
+    animation: rotate 8s infinite linear;
+}
+
+.logo {
+    width: 12em;
+    height: 3em;
+    font-weight: 600;
+}
+
+.downloadResumeButton {
+    width: 12em;
+    height: 3em;
+    padding: .9em;
+    /*right: 2em;*/
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 15px;
+}
+
+.downloadResumeButtonWhite {
+    width: 12em;
+    height: 3em;
+    padding: .9em;
+    /*right: 2em;*/
+    font-weight: 600;
+    background: white;
+    border: 1px solid white;
+    box-sizing: border-box;
+    border-radius: 15px;
+}
+
+.downloadResumeButton:hover {
+    background-color: black;
+    color: white;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+}
+
+.downloadResumeButtonWhite:hover {
+    background-color: black;
+    color: white;
+    border: black;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+}
+
+
+.projectBackground .downloadResumeButton, .contactBackground .downloadResumeButton {
+    background: white;
+    border: 1px solid #FFFFFF;
+
+}
+
+/*.downloadResumeButtonBlack{*/
+/*    background: black;*/
+/*    color: white;*/
+/*}*/
+
+.projectBackground .downloadResumeButton:hover, .contactBackground .downloadResumeButton:hover {
+    background-color: black;
+    color: white;
+    border: 1px solid #000000;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+}
+
+/*Responsiveness*/
+@media screen and (min-width: 320px) {
+    .project-card {
+        width: 19em;
+        height: 30em;
+
+    }
+
+    .navbar {
+        width: 19rem;
+    }
+
+    .navItem {
+        font-size: .85em;
+        margin: .5em;
+    }
+
+    .viewButton > button, .viewButton > a {
+        font-size: 1em;
+    }
+
+    .top-image img, .middle-image img {
+        width: 400px;
+        height: 300px;
+    }
+
+}
+
+@media screen and (min-width: 375px) {
+    .project-card {
+        width: 21em;
+        height: 30em;
+
+    }
+
+    .navbar {
+        width: 21rem;
+    }
+
+    .navItem {
+        font-size: .85em;
+        margin: .5em;
+    }
+
+    .navbar-nav.active {
+        border-radius: 1.5rem;
+    }
+
+    .top-image img {
+        width: 328px;
+        height: 206px;
+    }
+
+    /*.middle-image img {*/
+    /*    width: 328px;*/
+    /*    height: 206px;*/
+    /*}*/
+
+}
+
+@media screen and (min-width: 480px) {
+    .project-card {
+        width: 25em;
+        height: 30em;
+
+    }
+
+    .navbar-nav.active {
+        padding: 6px 3px;
+        background-color: black;
+        border-radius: 1em;
+
+    }
+
+    .navItem {
+        font-size: 1rem;
+        margin: 0;
+    }
+
+    .viewButton > button, .viewButton > a {
+        font-size: 1em;
+    }
+
+}
+
+@media screen and (min-width: 640px) {
+    .project-card {
+        width: 20em;
+        height: 24em;
+
+    }
+
+    .navbar-nav.active {
+        padding: 6px 3px;
+        background-color: black;
+        border-radius: 1em;
+
+    }
+
+    .navItem {
+        font-size: 1rem;
+        margin: 0;
+    }
+
+    .viewButton > button, .viewButton > a {
+        font-size: 1em;
+    }
+
+}
+
+@media screen and (min-width: 767px) {
+    .project-card {
+        width: 24em;
+        height: 24em;
+
+    }
+
+    .navbar-nav.active {
+        padding: 6px 3px;
+        background-color: black;
+        border-radius: 1em;
+
+    }
+
+    .navItem {
+        font-size: 1rem;
+        margin: .4em;
+    }
+
+    .viewButton > button, .viewButton > a {
+        font-size: 1em;
+    }
+
+    .top-image img {
+        width: 100%;
+        height: 30em;
+    }
+
+    .middle-image img {
+        width: 30em;
+        height: 50em;
+
+
+    }
+
+}
+
+@media screen and (min-width: 1024px) {
+    .project-card {
+        width: 31em;
+        height: 35em;
+
+    }
+
+    .navbar {
+        width: 25em;
+    }
+
+    .navItem {
+        font-size: .85em;
+        margin: .5em;
+    }
+
+
+    .navbar-nav.active {
+        padding: 6px 3px;
+        background-color: black;
+        border-radius: 1em;
+
+    }
+
+    .navItem {
+        font-size: 1.5rem;
+        margin: 0;
+    }
+
+    .viewButton > button, .viewButton > a {
+        font-size: 2em;
+    }
+
+    .final-image > img {
+        height: 50em;
+        /*width: 700em;*/
+
+    }
+
+}
+
+@media screen and (min-width: 1281px) {
+    .project-card {
+        width: 45em;
+        height: 45em;
+
+    }
+
+    .navbar {
+        width: 27.5em !important;
+    }
+
+    .navbar-nav.active {
+        padding: 6px 3px;
+        background-color: black;
+        border-radius: 1em;
+
+    }
+
+    .navItem {
+        font-size: 1.5rem;
+        margin: .2em;
+    }
+
+    .viewButton > button, .viewButton > a {
+        font-size: 2em;
+    }
+
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(359deg);
+    }
+}
+
+.read-more {
+    position: absolute;
+    left: 50%;
+    bottom: -20px;
+    z-index: 3;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    white-space: nowrap;
+    display: inline-block;
+    background-color: #4B4870;
+    color: #fff;
+    height: 45px;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    font-family: "Josefin Sans", sans-serif;
+    -webkit-box-shadow: 0px 3px 5px -1px rgb(7 10 25 / 20%);
+    font-weight: 500;
+    line-height: 45px;
+    padding: 0 30px;
+    margin: 0;
+    transition: background .17s ease;
+}
