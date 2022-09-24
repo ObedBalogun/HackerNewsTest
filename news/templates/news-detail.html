@@ -26,6 +26,7 @@
             </div>
                 <hr>
             <div class="comments mt-12">
+            {% if comments %}
                 {% for comment in comments %}
                     <div class="comment-card flex flex-row bg-white my-4">
                     <div class="basis-1/4 align-middle">
@@ -40,6 +41,9 @@
                     <hr>
 
                 {% endfor %}
+                {% else %}
+                <p class="text-rose-400 font-semibold italic">No comments yet...</p>
+            {% endif %}
             </div>
             </div>
 

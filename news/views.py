@@ -39,9 +39,10 @@ class NewsDetailView(DetailView):
         news_item = NewsItem.objects.get(item_id=self.kwargs['item_id'])
         comments = news_item.kids
         comment_list = []
-        for comment in comments:
-            comment_details = hacker.get_news_details(comment)
-            comment_list.append(comment_details)
+        if comments:
+            for comment in comments:
+                comment_details = hacker.get_news_details(comment)
+                comment_list.append(comment_details)
         context['comments'] = comment_list
         context['news'] = news_item
         return context

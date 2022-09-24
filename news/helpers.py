@@ -31,7 +31,7 @@ def fetch_news():
         else:
             latest_news_id = NewsItem.objects.all().latest('created').item_id
             index_of_latest_news = latest_news.index(latest_news_id)
-            for news_id in latest_news[(index_of_latest_news + 1):(100 + index_of_latest_news)]:
+            for news_id in latest_news[(index_of_latest_news + 1):(101 + index_of_latest_news)]:
                 news_details = hacker_news.get_news_details(news_id)
                 details_dict = {
                     'item_id': news_details['id'],
